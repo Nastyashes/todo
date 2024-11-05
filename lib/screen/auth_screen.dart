@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/generated/l10n.dart';
 import 'package:todo/screen/login_screen.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Auth'),
+        title: Text(S.of(context).registration),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,43 +23,35 @@ class _AuthScreenState extends State<AuthScreen> {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: TextFormField(
-                decoration: const InputDecoration(
-                    labelText: 'Email',
+                decoration:  InputDecoration(
+                    labelText: S.of(context).email,
                     border:
-                        OutlineInputBorder(borderSide: BorderSide(width: 1))),
+                        const OutlineInputBorder(borderSide: BorderSide(width: 1))),
               )),
           const SizedBox(height: 16.0),
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: TextFormField(
-                decoration: const InputDecoration(
-                    labelText: 'Password',
+                decoration: InputDecoration(
+                    labelText: S.of(context).password,
                     border:
-                        OutlineInputBorder(borderSide: BorderSide(width: 1))),
+                        const OutlineInputBorder(borderSide: BorderSide(width: 1))),
                 obscureText: true,
               )),
           const SizedBox(height: 16.0),
           ElevatedButton(
-            child: const Text('Auth'),
+            child:  Text(S.of(context).registration),
             onPressed: () {},
           ),
           const SizedBox(height: 16.0),
-          ElevatedButton.icon(
-            icon: Image.asset(
-              'assets/icons/google.png',
-              width: 32,
-            ),
-            label: const Text('Sign in with Google'),
-            onPressed: () {},
-          ),
           TextButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pop(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const LoginScreen()));
               },
-              child: const Text('Sign in'))
+              child: Text(S.of(context).login))
         ],
       ),
     );

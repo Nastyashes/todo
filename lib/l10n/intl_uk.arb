@@ -8,9 +8,9 @@
     "completed" : "Виконано",
     "notFulfilled" : "Не виконано",
     "allNotes" : "Всі замітки",
-    "" : "Увійти з FaseBuk",
-    "" : "Увійти з Google",
-    "" : "Редагувати",
+    "signInFaceBook" : "Увійти з FaseBuk",
+    "signInGoogle" : "Увійти з Google",
+    "edit" : "Редагувати",
       "@save": {},
       "@@locale": "uk"
     }

@@ -7,10 +7,8 @@
     "registration" : "Registration",
     "completed" : "Completed",
     "notFulfilled" : "Not Fulfilled",
-    "allNotes" : "Всі замітки",
-   
-    "" : "Увійти з FaceBook",
-    "" : "Увійти з Google",
-    "" : "Редагувати",
-      "@save": {},
-      "@@locale": "en"}
+    "allNotes" : "All Notes", 
+    "signInFaceBook" : "Sign in with FaceBook",
+    "signInGoogle" : "Sign in with Google",
+    "edit" : "Edit"
+  }

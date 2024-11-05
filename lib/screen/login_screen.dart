@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo/generated/l10n.dart';
 import 'package:todo/screen/auth_screen.dart';
+import 'package:todo/screen/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: Text(S.of(context).login),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,27 +24,30 @@ class _LoginScreenState extends State<LoginScreen> {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: TextFormField(
-                decoration: const InputDecoration(
-                    labelText: 'Email',
-                    border:
-                        OutlineInputBorder(borderSide: BorderSide(width: 1))),
+                decoration: InputDecoration(
+                    labelText: S.of(context).email,
+                    border: const OutlineInputBorder(
+                        borderSide: BorderSide(width: 1))),
               )),
           const SizedBox(height: 16.0),
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: TextFormField(
-                decoration: const InputDecoration(
-                    labelText: 'Password',
-                    border:
-                        OutlineInputBorder(borderSide: BorderSide(width: 1))),
+                decoration: InputDecoration(
+                    labelText: S.of(context).password,
+                    border: const OutlineInputBorder(
+                        borderSide: BorderSide(width: 1))),
                 obscureText: true,
               )),
           const SizedBox(height: 16.0),
           ElevatedButton(
             style: const ButtonStyle(
                 padding: WidgetStatePropertyAll(EdgeInsets.all(10))),
-            child: const Text('Login'),
-            onPressed: () {},
+            child: Text(S.of(context).login),
+            onPressed: () {Navigator.pop(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HomeScreen()));},
           ),
           const SizedBox(height: 16.0),
           ElevatedButton.icon(
@@ -53,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
               'assets/icons/google.png',
               width: 32,
             ),
-            label: const Text('Sign in with Google'),
+            label: Text(S.of(context).signInGoogle),
             onPressed: () {},
           ),
           TextButton(
@@ -65,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     MaterialPageRoute(
                         builder: (context) => const AuthScreen()));
               },
-              child: const Text('Registred'))
+              child: Text(S.of(context).registration))
         ],
       ),
     );

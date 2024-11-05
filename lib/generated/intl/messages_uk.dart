@@ -26,10 +26,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "completed": MessageLookupByLibrary.simpleMessage("Виконано"),
         "create": MessageLookupByLibrary.simpleMessage("Створити"),
         "delete": MessageLookupByLibrary.simpleMessage("Видалити"),
+        "edit": MessageLookupByLibrary.simpleMessage("Редагувати"),
         "email": MessageLookupByLibrary.simpleMessage("Е-Мейл"),
         "login": MessageLookupByLibrary.simpleMessage("Увійти"),
         "notFulfilled": MessageLookupByLibrary.simpleMessage("Не виконано"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
-        "registration": MessageLookupByLibrary.simpleMessage("Реєстрація")
+        "registration": MessageLookupByLibrary.simpleMessage("Реєстрація"),
+        "signInFaceBook":
+            MessageLookupByLibrary.simpleMessage("Увійти з FaseBuk"),
+        "signInGoogle": MessageLookupByLibrary.simpleMessage("Увійти з Google")
       };
 }

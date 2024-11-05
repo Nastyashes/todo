@@ -22,14 +22,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "allNotes": MessageLookupByLibrary.simpleMessage("Всі замітки"),
+        "allNotes": MessageLookupByLibrary.simpleMessage("All Notes"),
         "completed": MessageLookupByLibrary.simpleMessage("Completed"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "email": MessageLookupByLibrary.simpleMessage("E-mail"),
         "login": MessageLookupByLibrary.simpleMessage("Sign in"),
         "notFulfilled": MessageLookupByLibrary.simpleMessage("Not Fulfilled"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "registration": MessageLookupByLibrary.simpleMessage("Registration")
+        "registration": MessageLookupByLibrary.simpleMessage("Registration"),
+        "signInFaceBook":
+            MessageLookupByLibrary.simpleMessage("Sign in with FaceBook"),
+        "signInGoogle":
+            MessageLookupByLibrary.simpleMessage("Sign in with Google")
       };
 }

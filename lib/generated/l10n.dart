@@ -130,17 +130,45 @@ class S {
     );
   }
 
-  /// `Всі замітки`
+  /// `All Notes`
   String get allNotes {
     return Intl.message(
-      'Всі замітки',
+      'All Notes',
       name: 'allNotes',
       desc: '',
       args: [],
     );
   }
 
-  // skipped getter for the '' key
+  /// `Sign in with FaceBook`
+  String get signInFaceBook {
+    return Intl.message(
+      'Sign in with FaceBook',
+      name: 'signInFaceBook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in with Google`
+  String get signInGoogle {
+    return Intl.message(
+      'Sign in with Google',
+      name: 'signInGoogle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
