@@ -10,5 +10,9 @@
     "allNotes" : "All Notes", 
     "signInFaceBook" : "Sign in with FaceBook",
     "signInGoogle" : "Sign in with Google",
-    "edit" : "Edit"
+    "logout" :"Logout",
+    "ua" : "Ukraine",
+    "en" : "English",
+    "edit" : "Edit",
+    "sortBy" : "Sort by"
   }

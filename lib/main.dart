@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:todo/generated/l10n.dart';
-import 'package:todo/screen/login_screen.dart';
+import 'package:todo/screen/login_screen/login_screen.dart';
 import 'package:todo/theme.dart';
 import 'firebase_options.dart';
 

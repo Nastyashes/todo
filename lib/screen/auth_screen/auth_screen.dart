@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/generated/l10n.dart';
-import 'package:todo/screen/login_screen.dart';
+import 'package:todo/screen/login_screen/login_screen.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});

@@ -28,13 +28,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "email": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "en": MessageLookupByLibrary.simpleMessage("English"),
         "login": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "notFulfilled": MessageLookupByLibrary.simpleMessage("Not Fulfilled"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "registration": MessageLookupByLibrary.simpleMessage("Registration"),
         "signInFaceBook":
             MessageLookupByLibrary.simpleMessage("Sign in with FaceBook"),
         "signInGoogle":
-            MessageLookupByLibrary.simpleMessage("Sign in with Google")
+            MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+        "sortBy": MessageLookupByLibrary.simpleMessage("Sort by"),
+        "ua": MessageLookupByLibrary.simpleMessage("Ukraine")
       };
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/generated/l10n.dart';
-import 'package:todo/screen/auth_screen.dart';
-import 'package:todo/screen/home_screen.dart';
+import 'package:todo/screen/auth_screen/auth_screen.dart';
+import 'package:todo/screen/home_screen/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
             style: const ButtonStyle(
                 padding: WidgetStatePropertyAll(EdgeInsets.all(10))),
             child: Text(S.of(context).login),
-            onPressed: () {Navigator.pop(
+            onPressed: () {Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const HomeScreen()));},

@@ -10,7 +10,11 @@
     "allNotes" : "Всі замітки",
     "signInFaceBook" : "Увійти з FaseBuk",
     "signInGoogle" : "Увійти з Google",
+    "logout" :"Вийти",
+    "ua" : "Українська",
+    "en" : "Англійська",
     "edit" : "Редагувати",
+    "sortBy" : "Сортувати",
       "@save": {},
       "@@locale": "uk"
     }
