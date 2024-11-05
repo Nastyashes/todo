@@ -1,0 +1,16 @@
+{
+    "login" : "Sign in",
+    "email" : "E-mail",
+    "password" : "Password",
+    "create" : "Create",
+    "delete" : "Delete",
+    "registration" : "Registration",
+    "completed" : "Completed",
+    "notFulfilled" : "Не виконано",
+    "" : "Всі замітки",
+    "" : "Сортувати",
+    "" : "Увійти з FaseBuk",
+    "" : "Увійти з Google",
+    "" : "Редагувати",
+      "@save": {},
+      "@@locale": "en"}
