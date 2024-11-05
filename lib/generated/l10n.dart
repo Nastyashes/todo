@@ -120,11 +120,21 @@ class S {
     );
   }
 
-  /// `Не виконано`
+  /// `Not Fulfilled`
   String get notFulfilled {
     return Intl.message(
-      'Не виконано',
+      'Not Fulfilled',
       name: 'notFulfilled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Всі замітки`
+  String get allNotes {
+    return Intl.message(
+      'Всі замітки',
+      name: 'allNotes',
       desc: '',
       args: [],
     );

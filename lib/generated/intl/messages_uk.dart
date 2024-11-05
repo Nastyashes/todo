@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "allNotes": MessageLookupByLibrary.simpleMessage("Всі замітки"),
         "completed": MessageLookupByLibrary.simpleMessage("Виконано"),
         "create": MessageLookupByLibrary.simpleMessage("Створити"),
         "delete": MessageLookupByLibrary.simpleMessage("Видалити"),
