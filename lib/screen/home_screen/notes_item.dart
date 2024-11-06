@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/screen/entities/notes.dart';
 
 class NotesItem extends StatefulWidget{
   const NotesItem({super.key});
@@ -8,6 +9,8 @@ class NotesItem extends StatefulWidget{
    }
   class _NotesItemState extends State<NotesItem> {
     bool isCompleted = false;
+    Notes?  notes;
+
   
   @override
   Widget build(BuildContext context) {
@@ -20,19 +23,17 @@ class NotesItem extends StatefulWidget{
       });
      },
        icon:  isCompleted
-        ? Icon(Icons.check_circle_outline, color: Colors.green) 
-        : Icon(Icons.circle_outlined)
-       //Icon(Icons.circle_outlined)
-      //Icon(Icons.check_circle_outline)
+        ? const Icon(Icons.check_circle_outline, color: Colors.green) 
+        : const Icon(Icons.circle_outlined)
        ),
-       SizedBox(width: 8,),
+       const SizedBox(width: 8,),
        Column(crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-       Title(color: Colors.black, child: Text("ff")),
-       Text("ccccccccccc")],),
-       SizedBox(width: 8,),
+       Title(color: Colors.black, child: Text('${notes?.headline}')),
+       Text('${notes?.description}')],),
+       const SizedBox(width: 8,),
        IconButton(onPressed: (){},
-      icon: Icon(Icons.delete)
+      icon: const Icon(Icons.delete)
        ),
     ]);
   }

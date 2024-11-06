@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todo/generated/l10n.dart';
 import 'package:todo/screen/home_screen/notes_item.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, required this.user});
+ final User user;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -12,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late List<String> sort;
   String? selectedSort;
+  
 
   @override
   void didChangeDependencies() {
@@ -49,12 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.language),
             onSelected: (value) {
               if (value == 1) {
-                // authControler.logout();
+                // authControler.ua();
               }
               if (value == 2) {
-                // authControler.logout();
+                // authControler.en();
               }
-            },
+              
+               
+                          },
             itemBuilder: (context) => [
               PopupMenuItem<int>(
                   value: 1,
@@ -92,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           itemBuilder: (context) => [
             const PopupMenuItem<int>(
-                value: 0, enabled: false, child: Text('user@mail.com')),
+                value: 0, enabled: false, child: Text('mail')),
             PopupMenuItem<int>(
                 value: 1,
                 child: Row(
@@ -108,9 +113,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Column(
+      body: const Column(
         children: [
-          const Padding(padding: EdgeInsets.symmetric(horizontal: 20),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 20),
           child: NotesItem(),),
        ],
       ),
