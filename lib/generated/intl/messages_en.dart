@@ -22,15 +22,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add": MessageLookupByLibrary.simpleMessage("Add"),
+        "addNewNote": MessageLookupByLibrary.simpleMessage("Add a new note"),
         "allNotes": MessageLookupByLibrary.simpleMessage("All Notes"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "completed": MessageLookupByLibrary.simpleMessage("Completed"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "email": MessageLookupByLibrary.simpleMessage("E-mail"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
+        "headline": MessageLookupByLibrary.simpleMessage("Headline"),
         "login": MessageLookupByLibrary.simpleMessage("Sign in"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "noNotes": MessageLookupByLibrary.simpleMessage("No Notes"),
         "notFulfilled": MessageLookupByLibrary.simpleMessage("Not Fulfilled"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "registration": MessageLookupByLibrary.simpleMessage("Registration"),

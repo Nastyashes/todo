@@ -200,6 +200,66 @@ class S {
     );
   }
 
+  /// `Add a new note`
+  String get addNewNote {
+    return Intl.message(
+      'Add a new note',
+      name: 'addNewNote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Headline`
+  String get headline {
+    return Intl.message(
+      'Headline',
+      name: 'headline',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get add {
+    return Intl.message(
+      'Add',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Notes`
+  String get noNotes {
+    return Intl.message(
+      'No Notes',
+      name: 'noNotes',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Sort by`
   String get sortBy {
     return Intl.message(

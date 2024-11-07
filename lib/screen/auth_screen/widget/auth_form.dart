@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/generated/l10n.dart';
 
-
 class AuthForm extends StatelessWidget {
   const AuthForm({
     super.key,
@@ -43,17 +42,6 @@ class AuthForm extends StatelessWidget {
               obscureText: true,
             )),
         const SizedBox(height: 16.0),
-        
-      /*  TextButton(
-            style: const ButtonStyle(
-                padding: WidgetStatePropertyAll(EdgeInsets.all(10))),
-            onPressed: () {
-             Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const RegisterScreen()));
-            },
-            child: Text(S.of(context).registration)) */
       ],
     );
   }

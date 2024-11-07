@@ -22,20 +22,27 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add": MessageLookupByLibrary.simpleMessage("Додати"),
+        "addNewNote":
+            MessageLookupByLibrary.simpleMessage("Додати нову нотатку"),
         "allNotes": MessageLookupByLibrary.simpleMessage("Всі замітки"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Скасувати"),
         "completed": MessageLookupByLibrary.simpleMessage("Виконано"),
         "create": MessageLookupByLibrary.simpleMessage("Створити"),
         "delete": MessageLookupByLibrary.simpleMessage("Видалити"),
+        "description": MessageLookupByLibrary.simpleMessage("Опис"),
         "edit": MessageLookupByLibrary.simpleMessage("Редагувати"),
         "email": MessageLookupByLibrary.simpleMessage("Е-Мейл"),
         "en": MessageLookupByLibrary.simpleMessage("Англійська"),
+        "headline": MessageLookupByLibrary.simpleMessage("Заголовок"),
         "login": MessageLookupByLibrary.simpleMessage("Увійти"),
         "logout": MessageLookupByLibrary.simpleMessage("Вийти"),
+        "noNotes": MessageLookupByLibrary.simpleMessage("Нотатків немає"),
         "notFulfilled": MessageLookupByLibrary.simpleMessage("Не виконано"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "registration": MessageLookupByLibrary.simpleMessage("Реєстрація"),
         "signInFaceBook":
-            MessageLookupByLibrary.simpleMessage("Увійти з FaseBuk"),
+            MessageLookupByLibrary.simpleMessage("Увійти з FaceBook"),
         "signInGoogle": MessageLookupByLibrary.simpleMessage("Увійти з Google"),
         "sortBy": MessageLookupByLibrary.simpleMessage("Сортувати"),
         "ua": MessageLookupByLibrary.simpleMessage("Українська")

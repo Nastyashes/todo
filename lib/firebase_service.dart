@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer';
 
 class FirebaseService {
   static final FirebaseService _singleton = FirebaseService._internal();
@@ -14,7 +15,6 @@ class FirebaseService {
 
   Stream<User?> get userChanges => _auth.authStateChanges();
 
-
   onListenUser(void Function(User?)? doListen) {
     auth.authStateChanges().listen(doListen);
   }
@@ -26,12 +26,12 @@ class FirebaseService {
     try {
       final credential = await auth.signInWithEmailAndPassword(
           email: email, password: password);
-      print(credential);
+      log('User signed in: $credential');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+        log('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        log('Wrong password provided for that user.');
       }
     }
   }
@@ -45,15 +45,15 @@ class FirebaseService {
         email: email,
         password: password,
       );
-      print(credential);
+      log('User registered: $credential');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+        log('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        log('The account already exists for that email.');
       }
     } catch (e) {
-      print(e);
+      log('Error: $e');
     }
   }
 
