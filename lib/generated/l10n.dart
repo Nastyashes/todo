@@ -140,11 +140,11 @@ class S {
     );
   }
 
-  /// `Sign in with FaceBook`
-  String get signInFaceBook {
+  /// `Sign in with Facebook`
+  String get signInFacebook {
     return Intl.message(
-      'Sign in with FaceBook',
-      name: 'signInFaceBook',
+      'Sign in with Facebook',
+      name: 'signInFacebook',
       desc: '',
       args: [],
     );

@@ -41,8 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "notFulfilled": MessageLookupByLibrary.simpleMessage("Не виконано"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "registration": MessageLookupByLibrary.simpleMessage("Реєстрація"),
-        "signInFaceBook":
-            MessageLookupByLibrary.simpleMessage("Увійти з FaceBook"),
+        "signInFacebook":
+            MessageLookupByLibrary.simpleMessage("Увійти з Facebook"),
         "signInGoogle": MessageLookupByLibrary.simpleMessage("Увійти з Google"),
         "sortBy": MessageLookupByLibrary.simpleMessage("Сортувати"),
         "ua": MessageLookupByLibrary.simpleMessage("Українська")

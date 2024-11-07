@@ -40,8 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "notFulfilled": MessageLookupByLibrary.simpleMessage("Not Fulfilled"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "registration": MessageLookupByLibrary.simpleMessage("Registration"),
-        "signInFaceBook":
-            MessageLookupByLibrary.simpleMessage("Sign in with FaceBook"),
+        "signInFacebook":
+            MessageLookupByLibrary.simpleMessage("Sign in with Facebook"),
         "signInGoogle":
             MessageLookupByLibrary.simpleMessage("Sign in with Google"),
         "sortBy": MessageLookupByLibrary.simpleMessage("Sort by"),

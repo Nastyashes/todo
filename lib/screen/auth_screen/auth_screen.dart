@@ -90,6 +90,22 @@ class _AuthScreenState extends State<AuthScreen> {
           onPressed: () {},
         ),
         const SizedBox(height: 16.0),
+        ElevatedButton.icon(
+          style: ButtonStyle(
+            shape: WidgetStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+            padding: const WidgetStatePropertyAll(EdgeInsets.all(15)),
+          ),
+          icon: Image.asset(
+            'assets/icons/facebook.png',
+            width: 32,
+          ),
+          label: Text(S.of(context).signInFacebook),
+          onPressed: () {},
+        ),
         TextButton(
             child: Text('$buttonSwapText ?'),
             onPressed: () {
