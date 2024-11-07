@@ -35,12 +35,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Е-Мейл"),
         "en": MessageLookupByLibrary.simpleMessage("Англійська"),
         "headline": MessageLookupByLibrary.simpleMessage("Заголовок"),
-        "login": MessageLookupByLibrary.simpleMessage("Увійти"),
+        "login":
+            MessageLookupByLibrary.simpleMessage("Ви маєте аккаунт? Увійти"),
         "logout": MessageLookupByLibrary.simpleMessage("Вийти"),
         "noNotes": MessageLookupByLibrary.simpleMessage("Нотатків немає"),
         "notFulfilled": MessageLookupByLibrary.simpleMessage("Не виконано"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
-        "registration": MessageLookupByLibrary.simpleMessage("Реєстрація"),
+        "registr": MessageLookupByLibrary.simpleMessage("Реєстрація"),
+        "registration": MessageLookupByLibrary.simpleMessage(
+            "Ви ще не маєте аккаунту? Реєстрація"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Увійти"),
         "signInFacebook":
             MessageLookupByLibrary.simpleMessage("Увійти з Facebook"),
         "signInGoogle": MessageLookupByLibrary.simpleMessage("Увійти з Google"),

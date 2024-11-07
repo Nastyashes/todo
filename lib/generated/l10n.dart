@@ -51,9 +51,19 @@ class S {
   }
 
   /// `Sign in`
-  String get login {
+  String get signIn {
     return Intl.message(
       'Sign in',
+      name: 'signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you have an account? Sign in`
+  String get login {
+    return Intl.message(
+      'Do you have an account? Sign in',
       name: 'login',
       desc: '',
       args: [],
@@ -101,9 +111,19 @@ class S {
   }
 
   /// `Registration`
-  String get registration {
+  String get registr {
     return Intl.message(
       'Registration',
+      name: 'registr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account yet? Register`
+  String get registration {
+    return Intl.message(
+      'Don\'t have an account yet? Register',
       name: 'registration',
       desc: '',
       args: [],

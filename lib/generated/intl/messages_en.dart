@@ -34,12 +34,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("E-mail"),
         "en": MessageLookupByLibrary.simpleMessage("English"),
         "headline": MessageLookupByLibrary.simpleMessage("Headline"),
-        "login": MessageLookupByLibrary.simpleMessage("Sign in"),
+        "login": MessageLookupByLibrary.simpleMessage(
+            "Do you have an account? Sign in"),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "noNotes": MessageLookupByLibrary.simpleMessage("No Notes"),
         "notFulfilled": MessageLookupByLibrary.simpleMessage("Not Fulfilled"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
-        "registration": MessageLookupByLibrary.simpleMessage("Registration"),
+        "registr": MessageLookupByLibrary.simpleMessage("Registration"),
+        "registration": MessageLookupByLibrary.simpleMessage(
+            "Don\'t have an account yet? Register"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
         "signInFacebook":
             MessageLookupByLibrary.simpleMessage("Sign in with Facebook"),
         "signInGoogle":

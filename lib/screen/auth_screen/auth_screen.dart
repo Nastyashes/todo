@@ -13,7 +13,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  bool isLogin = false;
+  bool isLogin = true;
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -39,7 +39,7 @@ class _AuthScreenState extends State<AuthScreen> {
               password: passwordController.text,
             );
     final buttonText =
-        isLogin ? S.of(context).login : S.of(context).registration;
+        isLogin ? S.of(context).signIn : S.of(context).registr;
     final buttonSwapText =
         isLogin ? S.of(context).registration : S.of(context).login;
 
@@ -51,69 +51,76 @@ class _AuthScreenState extends State<AuthScreen> {
         title: Text(buttonText),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-        AuthForm(
-          onAuth: onAuth,
-          authButtonText: buttonText,
-          emailController: emailController,
-          passwordController: passwordController,
-        ),
-        ElevatedButton(
-          style: ButtonStyle(
-            shape: WidgetStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AuthForm(
+              onAuth: onAuth,
+              authButtonText: buttonText,
+              emailController: emailController,
+              passwordController: passwordController,
             ),
-            padding: const WidgetStatePropertyAll(EdgeInsets.all(20)),
-          ),
-          onPressed: onAuth,
-          child: Text(buttonText),
-        ),
-        const SizedBox(height: 16.0),
-        ElevatedButton.icon(
-          style: ButtonStyle(
-            shape: WidgetStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+            ElevatedButton(
+              style: ButtonStyle(
+                shape: WidgetStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                padding: const WidgetStatePropertyAll(EdgeInsets.all(20)),
               ),
+              onPressed: onAuth,
+              child: Text(buttonText),
             ),
-            padding: const WidgetStatePropertyAll(EdgeInsets.all(15)),
-          ),
-          icon: Image.asset(
-            'assets/icons/google.png',
-            width: 32,
-          ),
-          label: Text(S.of(context).signInGoogle),
-          onPressed: () {},
-        ),
-        const SizedBox(height: 16.0),
-        ElevatedButton.icon(
-          style: ButtonStyle(
-            shape: WidgetStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+            const SizedBox(height: 16.0),
+           if (isLogin) ...[
+            ElevatedButton.icon(
+              style: ButtonStyle(
+                shape: WidgetStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                padding: const WidgetStatePropertyAll(EdgeInsets.all(15)),
               ),
+              icon: Image.asset(
+                'assets/icons/google.png',
+                width: 32,
+              ),
+              label: Text(S.of(context).signInGoogle),
+              onPressed: () async {
+                await firebaseService.loginWithGoogle();
+              },
             ),
-            padding: const WidgetStatePropertyAll(EdgeInsets.all(15)),
-          ),
-          icon: Image.asset(
-            'assets/icons/facebook.png',
-            width: 32,
-          ),
-          label: Text(S.of(context).signInFacebook),
-          onPressed: () {},
-        ),
-        TextButton(
+            const SizedBox(height: 16.0),
+            ElevatedButton.icon(
+              style: ButtonStyle(
+                shape: WidgetStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                padding: const WidgetStatePropertyAll(EdgeInsets.all(15)),
+              ),
+              icon: Image.asset(
+                'assets/icons/facebook.png',
+                width: 32,
+              ),
+              label: Text(S.of(context).signInFacebook),
+              onPressed: () {},
+            ),
+          ],
+          
+          TextButton(
             child: Text('$buttonSwapText ?'),
             onPressed: () {
               setState(() {
                 isLogin = !isLogin;
               });
-            })
-      ]),
+            },
+          )
+        ],
+      ),
     );
   }
 }
