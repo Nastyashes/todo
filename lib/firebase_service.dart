@@ -10,6 +10,11 @@ class FirebaseService {
   final auth = FirebaseAuth.instance;
   final currentUser = FirebaseAuth.instance.currentUser;
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Stream<User?> get userChanges => _auth.authStateChanges();
+
+
   onListenUser(void Function(User?)? doListen) {
     auth.authStateChanges().listen(doListen);
   }

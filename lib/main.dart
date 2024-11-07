@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -6,7 +7,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:todo/firebase_service.dart';
 import 'package:todo/generated/l10n.dart';
 import 'package:todo/screen/auth_screen/auth_screen.dart';
-import 'package:todo/screen/entities/user.dart';
+import 'package:todo/screen/home_screen/home_screen.dart';
 import 'package:todo/theme.dart';
 import 'firebase_options.dart';
 
@@ -28,24 +29,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+   Locale _locale = const Locale('en');
+
+   void changeLanguage(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
   @override
-  void initState() {
+   void initState() {
     super.initState();
-    FirebaseService().onListenUser((user) {
-  WidgetsBinding.instance.addPostFrameCallback((_) { 
-    if (user == null) {
-      Navigator.pushReplacement(
-        kNavigatorKey.currentContext!,
-        MaterialPageRoute(builder: (_) => const AuthScreen()),
-      );
-    } else {
-      Navigator.pushReplacement(
-        kNavigatorKey.currentContext!,
-        MaterialPageRoute(builder: (_) => UserInfoScreen(user: user)),
-      );
-    }
-  });
-});
   }
 
   @override
@@ -73,7 +67,29 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: const AuthScreen(),
+      locale: _locale,
+      home:  AuthHandler(changeLanguage: changeLanguage),
+    );
+  }
+}
+
+
+class AuthHandler extends StatelessWidget {
+  final Function(Locale) changeLanguage;
+  const AuthHandler({super.key, required this.changeLanguage});
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseService().userChanges, 
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator( color: Colors.amber,));
+        } else if (snapshot.hasData) {
+          return HomeScreen(user: snapshot.data!, changeLanguage: changeLanguage);
+        } else {
+          return AuthScreen(changeLanguage: changeLanguage);
+        }
+      },
     );
   }
 }

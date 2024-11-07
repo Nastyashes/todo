@@ -1,11 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:todo/firebase_service.dart';
 import 'package:todo/generated/l10n.dart';
+import 'package:todo/screen/home_screen/language_dialog.dart';
 import 'package:todo/screen/home_screen/notes_item.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.user});
- final User user;
+  const HomeScreen({super.key, required this.user, required this.changeLanguage});
+  
+  final User user;
+  final Function(Locale) changeLanguage;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -14,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late List<String> sort;
   String? selectedSort;
-  
 
   @override
   void didChangeDependencies() {
@@ -47,77 +50,44 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-          onPressed:() {}, icon: const Icon(Icons.add), ),
-          PopupMenuButton<int>(
-            icon: const Icon(Icons.language),
-            onSelected: (value) {
-              if (value == 1) {
-                // authControler.ua();
-              }
-              if (value == 2) {
-                // authControler.en();
-              }
-              
-               
-                          },
-            itemBuilder: (context) => [
-              PopupMenuItem<int>(
-                  value: 1,
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.language,
-                        color: Colors.grey,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(S.of(context).ua)
-                    ],
-                  )),
-              PopupMenuItem<int>(
-                  value: 2,
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.language,
-                        color: Colors.grey,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(S.of(context).en)
-                    ],
-                  ))
-            ],
+            onPressed: () {}, 
+            icon: const Icon(Icons.add),
           ),
+          LanguageDialog(changeLanguage: widget.changeLanguage),
+              
+            
+          
         ],
         leading: PopupMenuButton<int>(
           icon: const Icon(Icons.person),
           onSelected: (value) {
             if (value == 1) {
-              // authControler.logout();
+              FirebaseService().logOut();
             }
           },
           itemBuilder: (context) => [
-            const PopupMenuItem<int>(
-                value: 0, enabled: false, child: Text('mail')),
             PopupMenuItem<int>(
-                value: 1,
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.logout,
-                      color: Colors.grey,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(S.of(context).logout)
-                  ],
-                ))
+                value: 0, enabled: false, child: Text('mail: ${widget.user.email}')),
+            PopupMenuItem<int>(
+              value: 1,
+              child: Row(
+                children: [
+                  const Icon(Icons.logout, color: Colors.grey),
+                  const SizedBox(width: 8),
+                  Text(S.of(context).logout)
+                ],
+              ),
+            ),
           ],
         ),
       ),
       body: const Column(
         children: [
-          Padding(padding: EdgeInsets.symmetric(horizontal: 20),
-          child: NotesItem(),),
-       ],
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: NotesItem(),
+          ),
+        ],
       ),
     );
   }

@@ -43,24 +43,7 @@ class AuthForm extends StatelessWidget {
               obscureText: true,
             )),
         const SizedBox(height: 16.0),
-        ElevatedButton(
-          style: const ButtonStyle(
-              padding: WidgetStatePropertyAll(EdgeInsets.all(10))),
-          onPressed: onAuth,
-          child: Text(S.of(context).login),
-        ),
-        const SizedBox(height: 16.0),
-        ElevatedButton.icon(
-          style: const ButtonStyle(
-            padding: WidgetStatePropertyAll(EdgeInsets.all(10)),
-          ),
-          icon: Image.asset(
-            'assets/icons/google.png',
-            width: 32,
-          ),
-          label: Text(S.of(context).signInGoogle),
-          onPressed: () {},
-        ),
+        
       /*  TextButton(
             style: const ButtonStyle(
                 padding: WidgetStatePropertyAll(EdgeInsets.all(10))),
