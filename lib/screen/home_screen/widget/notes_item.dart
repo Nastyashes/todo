@@ -20,9 +20,10 @@ class NotesItem extends StatelessWidget {
         Notes note = notesList[index];
         return Container(
           decoration: const BoxDecoration(
-              
               border: BorderDirectional(
-                  bottom: BorderSide(color:Color.fromARGB(255, 78, 212, 134),))),
+                  bottom: BorderSide(
+            color: Color.fromARGB(255, 78, 212, 134),
+          ))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -34,21 +35,27 @@ class NotesItem extends StatelessWidget {
                     : const Icon(Icons.circle_outlined),
               ),
               const SizedBox(width: 8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                        note.headline,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          
-                        ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      note.headline,
+                      softWrap: true,
+                      style: const TextStyle(
+                        fontSize: 18,
                       ),
-                  Text(
-                    note.description,
-                    style: const TextStyle(fontSize: 14),
-                  ),
-                ],
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      note.description,
+                      softWrap: true,
+                      style: const TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(width: 8),
               IconButton(

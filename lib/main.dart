@@ -68,11 +68,11 @@ class _MyAppState extends State<MyApp> {
         ],
       ),
       theme: ThemeData(
-        scaffoldBackgroundColor:  const Color.fromARGB(255, 214, 252, 230),
-        canvasColor: const Color.fromARGB(255, 214, 252, 230),
-        primaryColor: const Color.fromARGB(255, 78, 212, 134),
+        scaffoldBackgroundColor:  const Color(0xFFD6FCE6),
+        canvasColor: const Color(0xFFD6FCE6),
+        primaryColor: const Color(0xFF4ED486),
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: const Color.fromARGB(255, 78, 212, 134),
+          primary: const Color(0xFF4ED486),
           secondary: Colors.lightGreen, 
         ),
         appBarTheme: const AppBarTheme(
