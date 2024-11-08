@@ -59,66 +59,91 @@ class _AuthScreenState extends State<AuthScreen> {
             emailController: emailController,
             passwordController: passwordController,
           ),
-          ElevatedButton(
-            style: ButtonStyle(
-              shape: WidgetStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              padding: const WidgetStatePropertyAll(EdgeInsets.all(20)),
-            ),
-            onPressed: onAuth,
-            child: Text(buttonText),
-          ),
-          const SizedBox(height: 16.0),
-          if (isLogin) ...[
-            ElevatedButton.icon(
-              style: ButtonStyle(
-                shape: WidgetStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              double buttonWidth = constraints.maxWidth > 600 ? 400 : constraints.maxWidth * 0.8;
+
+              return Column(
+                children: [
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: buttonWidth),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape: WidgetStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                        ),
+                        padding: WidgetStateProperty.all(
+                          const EdgeInsets.all(20),
+                        ),
+                      ),
+                      onPressed: onAuth,
+                      child: Text(buttonText),
+                    ),
                   ),
-                ),
-                padding: const WidgetStatePropertyAll(EdgeInsets.all(15)),
-              ),
-              icon: Image.asset(
-                'assets/icons/google.png',
-                width: 32,
-              ),
-              label: Text(S.of(context).signInGoogle),
-              onPressed: () async {
-                await firebaseService.loginWithGoogle();
-              },
-            ),
-            const SizedBox(height: 16.0),
-            ElevatedButton.icon(
-              style: ButtonStyle(
-                shape: WidgetStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-                padding: const WidgetStatePropertyAll(EdgeInsets.all(15)),
-              ),
-              icon: Image.asset(
-                'assets/icons/facebook.png',
-                width: 32,
-              ),
-              label: Text(S.of(context).signInFacebook),
-              onPressed: () async {
-                await firebaseService.loginWithFacebook();
-              },
-            ),
-          ],
-          TextButton(
-            child: Text('$buttonSwapText ?'),
-            onPressed: () {
-              setState(() {
-                isLogin = !isLogin;
-              });
+                  const SizedBox(height: 16.0),
+                  if (isLogin) ...[
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: buttonWidth),
+                      child: ElevatedButton.icon(
+                        style: ButtonStyle(
+                          shape: WidgetStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                          ),
+                          padding: WidgetStateProperty.all(
+                            const EdgeInsets.all(15),
+                          ),
+                        ),
+                        icon: Image.asset(
+                          'assets/icons/google.png',
+                          width: 32,
+                        ),
+                        label: Text(S.of(context).signInGoogle),
+                        onPressed: () async {
+                          await firebaseService.loginWithGoogle();
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 16.0),
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: buttonWidth),
+                      child: ElevatedButton.icon(
+                        style: ButtonStyle(
+                          shape: WidgetStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                          ),
+                          padding: WidgetStateProperty.all(
+                            const EdgeInsets.all(15),
+                          ),
+                        ),
+                        icon: Image.asset(
+                          'assets/icons/facebook.png',
+                          width: 32,
+                        ),
+                        label: Text(S.of(context).signInFacebook),
+                        onPressed: () async {
+                          await firebaseService.loginWithFacebook();
+                        },
+                      ),
+                    ),
+                  ],
+                  TextButton(
+                    child: Text('$buttonSwapText ?'),
+                    onPressed: () {
+                      setState(() {
+                        isLogin = !isLogin;
+                      });
+                    },
+                  )
+                ],
+              );
             },
-          )
+          ),
         ],
       ),
     );
