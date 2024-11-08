@@ -38,8 +38,7 @@ class _AuthScreenState extends State<AuthScreen> {
               email: emailController.text,
               password: passwordController.text,
             );
-    final buttonText =
-        isLogin ? S.of(context).signIn : S.of(context).registr;
+    final buttonText = isLogin ? S.of(context).signIn : S.of(context).registr;
     final buttonSwapText =
         isLogin ? S.of(context).registration : S.of(context).login;
 
@@ -51,29 +50,29 @@ class _AuthScreenState extends State<AuthScreen> {
         title: Text(buttonText),
       ),
       body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AuthForm(
-              onAuth: onAuth,
-              authButtonText: buttonText,
-              emailController: emailController,
-              passwordController: passwordController,
-            ),
-            ElevatedButton(
-              style: ButtonStyle(
-                shape: WidgetStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AuthForm(
+            onAuth: onAuth,
+            authButtonText: buttonText,
+            emailController: emailController,
+            passwordController: passwordController,
+          ),
+          ElevatedButton(
+            style: ButtonStyle(
+              shape: WidgetStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
                 ),
-                padding: const WidgetStatePropertyAll(EdgeInsets.all(20)),
               ),
-              onPressed: onAuth,
-              child: Text(buttonText),
+              padding: const WidgetStatePropertyAll(EdgeInsets.all(20)),
             ),
-            const SizedBox(height: 16.0),
-           if (isLogin) ...[
+            onPressed: onAuth,
+            child: Text(buttonText),
+          ),
+          const SizedBox(height: 16.0),
+          if (isLogin) ...[
             ElevatedButton.icon(
               style: ButtonStyle(
                 shape: WidgetStateProperty.all(
@@ -107,10 +106,11 @@ class _AuthScreenState extends State<AuthScreen> {
                 width: 32,
               ),
               label: Text(S.of(context).signInFacebook),
-              onPressed: () {},
+              onPressed: () async {
+                await firebaseService.loginWithFacebook();
+              },
             ),
           ],
-          
           TextButton(
             child: Text('$buttonSwapText ?'),
             onPressed: () {

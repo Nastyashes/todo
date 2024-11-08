@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'dart:developer';
 
 import 'package:google_sign_in/google_sign_in.dart';
@@ -13,21 +14,43 @@ class FirebaseService {
   final auth = FirebaseAuth.instance;
   final currentUser = FirebaseAuth.instance.currentUser;
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-   Future<UserCredential?> loginWithGoogle() async {
-    try{
-     final googleUser = await GoogleSignIn().signIn();
-     final googleAuth = await googleUser?.authentication;
-     final cred = GoogleAuthProvider.credential(
-      idToken: googleAuth?.idToken, 
-      accessToken: googleAuth?.accessToken);
+  Future<UserCredential?> loginWithFacebook() async {
+    try {
+      final LoginResult result = await FacebookAuth.instance.login();
 
-    return await _auth.signInWithCredential(cred);  
-    }catch(e){
+      if (result.status == LoginStatus.success) {
+        final AccessToken accessToken = result.accessToken!;
 
-    log(e.toString());
+        final String token = accessToken.tokenString;
+
+        final facebookAuthCredential = FacebookAuthProvider.credential(token);
+
+        return await FirebaseAuth.instance
+            .signInWithCredential(facebookAuthCredential);
+      } else {
+        log("Facebook login failed: ${result.message}");
+        return null;
+      }
+    } catch (e) {
+      log("Error during Facebook sign-in: $e");
+      return null;
+    }
   }
-  return null;}
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<UserCredential?> loginWithGoogle() async {
+    try {
+      final googleUser = await GoogleSignIn().signIn();
+      final googleAuth = await googleUser?.authentication;
+      final cred = GoogleAuthProvider.credential(
+          idToken: googleAuth?.idToken, accessToken: googleAuth?.accessToken);
+
+      return await _auth.signInWithCredential(cred);
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
 
   Stream<User?> get userChanges => _auth.authStateChanges();
 
