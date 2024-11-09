@@ -47,26 +47,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
  void _addNote() async {
   if (_headlineController.text.isNotEmpty && _descriptionController.text.isNotEmpty) {
-    setState(() {
-      final newNote = Notes(
-        id: '', 
-        userId: widget.user.uid,
-        headline: _headlineController.text,
-        description: _descriptionController.text,
-        isCompleted: false,
-      );
+    final newNote = Notes(
+      id: '', // Ідентифікатор буде призначено пізніше
+      userId: widget.user.uid,
+      headline: _headlineController.text,
+      description: _descriptionController.text,
+      isCompleted: false,
+    );
 
-      DatabaseService().addNewNote(newNote).then((_) {
-       
-        notesList.add(newNote);  
+    try {
+      final documentRef = await DatabaseService().addNewNote(newNote);
+      final noteWithId = newNote.copyWith(id: documentRef.id);
+
+      setState(() {
+        notesList.add(noteWithId); 
         _applyFilter(selectedSort); 
         _headlineController.clear();
         _descriptionController.clear();
-      }).catchError((e) {
-        if (mounted) {
+      });
+    } catch (e) {
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error adding note: $e')));
-      }});
-    });
+      }
+    }
   }
 }
 

@@ -13,6 +13,22 @@ class Notes {
     this.isCompleted = false,
   });
 
+  Notes copyWith({
+    String? id,
+    String? userId,
+    String? headline,
+    String? description,
+    bool? isCompleted,
+  }) {
+    return Notes(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      headline: headline ?? this.headline,
+      description: description ?? this.description,
+      isCompleted: isCompleted ?? this.isCompleted,
+    );
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'userId': userId,

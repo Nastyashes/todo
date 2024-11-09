@@ -14,12 +14,14 @@ class DatabaseService {
     }
   }
 
-  Future<void> addNewNote(Notes note) async {
+  Future<DocumentReference> addNewNote(Notes note) async {
     try {
       DocumentReference docRef =
           await _db.collection('notes').add(note.toMap());
 
       await docRef.update({'id': docRef.id});
+
+      return docRef;
     } catch (e) {
       rethrow;
     }
@@ -33,15 +35,14 @@ class DatabaseService {
     }
   }
 
-  Stream<List<Notes>> getNotes({String? userId, bool? isCompleted}) {
+  Stream<List<Notes>> getNotes({required String userId}) {
     return _db
         .collection('notes')
         .where('userId', isEqualTo: userId)
         .snapshots()
         .map((snapshot) {
       return snapshot.docs
-          .map((doc) =>
-              Notes.fromFirestore(doc.id, doc.data()))
+          .map((doc) => Notes.fromFirestore(doc.id, doc.data()))
           .toList();
     });
   }

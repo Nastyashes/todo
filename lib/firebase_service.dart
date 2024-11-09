@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'dart:developer';
-
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseService {
@@ -20,9 +19,7 @@ class FirebaseService {
 
       if (result.status == LoginStatus.success) {
         final AccessToken accessToken = result.accessToken!;
-
         final String token = accessToken.tokenString;
-
         final facebookAuthCredential = FacebookAuthProvider.credential(token);
 
         return await FirebaseAuth.instance
@@ -37,7 +34,6 @@ class FirebaseService {
     }
   }
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<UserCredential?> loginWithGoogle() async {
     try {
       final googleUser = await GoogleSignIn().signIn();
@@ -45,14 +41,14 @@ class FirebaseService {
       final cred = GoogleAuthProvider.credential(
           idToken: googleAuth?.idToken, accessToken: googleAuth?.accessToken);
 
-      return await _auth.signInWithCredential(cred);
+      return await FirebaseAuth.instance.signInWithCredential(cred);
     } catch (e) {
-      log(e.toString());
+      log("Error during Google sign-in: $e");
     }
     return null;
   }
 
-  Stream<User?> get userChanges => _auth.authStateChanges();
+  Stream<User?> get userChanges => auth.authStateChanges();
 
   onListenUser(void Function(User?)? doListen) {
     auth.authStateChanges().listen(doListen);
@@ -102,5 +98,21 @@ class FirebaseService {
 
   onVerifyEmail() async {
     await currentUser?.sendEmailVerification();
+  }
+
+  // Метод для додавання пароля до облікового запису, якщо він ще не встановлений
+  Future<void> addPasswordToAccount(String password) async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        // Якщо обліковий запис вже існує і не має пароля, додамо його
+        await user.updatePassword(password);
+        log("Password has been set for the user");
+      } else {
+        log("No user is currently logged in.");
+      }
+    } catch (e) {
+      log("Error while setting password: $e");
+    }
   }
 }
