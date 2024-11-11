@@ -71,6 +71,7 @@ class FirebaseService {
     }
   }
 
+
   onRegister({
     required String email,
     required String password,
@@ -100,12 +101,12 @@ class FirebaseService {
     await currentUser?.sendEmailVerification();
   }
 
-  // Метод для додавання пароля до облікового запису, якщо він ще не встановлений
+  
   Future<void> addPasswordToAccount(String password) async {
     try {
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        // Якщо обліковий запис вже існує і не має пароля, додамо його
+        
         await user.updatePassword(password);
         log("Password has been set for the user");
       } else {
