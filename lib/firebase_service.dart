@@ -22,8 +22,7 @@ class FirebaseService {
         final String token = accessToken.tokenString;
         final facebookAuthCredential = FacebookAuthProvider.credential(token);
 
-        return await FirebaseAuth.instance
-            .signInWithCredential(facebookAuthCredential);
+        return await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
       } else {
         log("Facebook login failed: ${result.message}");
         return null;
@@ -100,12 +99,10 @@ class FirebaseService {
     await currentUser?.sendEmailVerification();
   }
 
-  // Метод для додавання пароля до облікового запису, якщо він ще не встановлений
   Future<void> addPasswordToAccount(String password) async {
     try {
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        // Якщо обліковий запис вже існує і не має пароля, додамо його
         await user.updatePassword(password);
         log("Password has been set for the user");
       } else {
@@ -113,6 +110,47 @@ class FirebaseService {
       }
     } catch (e) {
       log("Error while setting password: $e");
+    }
+  }
+
+  Future<void> linkEmailPasswordToGoogleAccount(
+      String email, String password) async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+
+      if (user != null) {
+        final emailCredential = EmailAuthProvider.credential(
+          email: email,
+          password: password,
+        );
+
+        await user.linkWithCredential(emailCredential);
+        log('Email and password linked to Google account successfully!');
+      } else {
+        log("User is not logged in.");
+      }
+    } catch (e) {
+      log("Error linking email/password to Google account: $e");
+    }
+  }
+
+  Future<void> linkGoogleAccountToEmailAccount() async {
+    try {
+      final googleUser = await GoogleSignIn().signIn();
+      final googleAuth = await googleUser?.authentication;
+      final googleCredential = GoogleAuthProvider.credential(
+        idToken: googleAuth?.idToken,
+        accessToken: googleAuth?.accessToken,
+      );
+
+      final currentUser = FirebaseAuth.instance.currentUser;
+
+      if (currentUser != null) {
+        await currentUser.linkWithCredential(googleCredential);
+        log('Google account linked successfully');
+      }
+    } catch (e) {
+      log("Error linking Google account: $e");
     }
   }
 }
